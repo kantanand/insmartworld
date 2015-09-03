@@ -27,7 +27,7 @@ public class main extends Activity
         settings.setAllowFileAccessFromFileURLs(true);
         settings.setAllowUniversalAccessFromFileURLs(true);
         settings.setBuiltInZoomControls(true);
-        String StaticIP = "104.237.128.165";
+        String StaticIP = "insmartworld.com";
         final Activity activity = this;
                 
         webView.setWebViewClient(new WebViewClient() {
