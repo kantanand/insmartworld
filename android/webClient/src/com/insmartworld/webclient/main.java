@@ -27,7 +27,11 @@ public class main extends Activity
         settings.setAllowFileAccessFromFileURLs(true);
         settings.setAllowUniversalAccessFromFileURLs(true);
         settings.setBuiltInZoomControls(true);
-        String StaticIP = "insmartworld.com";
+	    settings.setDomStorageEnabled(true);
+	    settings.setSupportMultipleWindows(true);
+	    settings.setJavaScriptCanOpenWindowsAutomatically(true);
+
+        String StaticIP = "www.insmartworld.com";
         final Activity activity = this;
                 
         webView.setWebViewClient(new WebViewClient() {
@@ -36,7 +40,7 @@ public class main extends Activity
             }
         });
         webView.setWebViewClient( new SSLTolerentWebViewClient() ); 
-        webView.loadUrl("http://"+StaticIP+"/");
+        webView.loadUrl("https://"+StaticIP+"/");
         //setContentView(R.layout.main);
     } 
 
@@ -45,6 +49,15 @@ public class main extends Activity
         @Override
         public void onReceivedSslError(WebView view, SslErrorHandler handler, SslError error) {
             handler.proceed(); // Ignore SSL certificate errors
+        }
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (webView.canGoBack()) {
+            webView.goBack();
+        } else {
+            super.onBackPressed();
         }
     }
 
